@@ -33,9 +33,13 @@ const cards = [
 
 
 const game_board = document.querySelector("#game-board")
+const doubel_cards = []
 
+cards.forEach(e => 
+    doubel_cards.push(e,e)
+)
 
-cards.forEach(element => {
+doubel_cards.forEach(element => {
 const card = document.createElement("div")
 const img = document.createElement("img")
 
