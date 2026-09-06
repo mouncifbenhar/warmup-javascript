@@ -36,6 +36,7 @@ const game_board = document.querySelector("#game-board")
 const movesElement = document.querySelector("#moves")
 const pairsElement = document.querySelector("#pairs")
 const messageElement = document.querySelector("#message")
+const restart = document.querySelector("#restart")
 const doubel_cards = []
 
 let card1 = null
@@ -85,7 +86,7 @@ card.addEventListener("click", () => {
             card2 = card
             moves++
             movesElement.textContent = moves
-            
+
             if (card1.id === card2.id) {
                 
                 result = true
@@ -141,7 +142,9 @@ game_board.append(card)
 card.append(img)
 });
 
-console.log(doubel_cards.length)
+restart.addEventListener("click",()=>{
+    location.reload()
+})
 
 
 
