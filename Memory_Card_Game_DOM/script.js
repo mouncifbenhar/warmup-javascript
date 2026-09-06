@@ -38,6 +38,7 @@ const doubel_cards = []
 let card1 = null
 let card2 = null
 let result = false
+let lockBoard = false
 
 cards.forEach(e =>
     doubel_cards.push({ ...e, b: Math.random()}, { ...e, b: Math.random()})
@@ -53,8 +54,12 @@ card.classList.add("card")
 card.setAttribute("id",element.id)
 img.setAttribute("src",element.image)
 img.setAttribute("alt",element.name)
+
 card.addEventListener("click", () => {
 
+        if (lockBoard) {
+            return
+        }
 
         if (card.classList.contains("flipped")) {
             return
@@ -71,7 +76,7 @@ card.addEventListener("click", () => {
         
 
         else {
-
+            
             card2 = card
 
             if (card1.id === card2.id) {
@@ -90,6 +95,7 @@ card.addEventListener("click", () => {
 
 
             if (!result) {
+                lockBoard = true
 
                 setTimeout(() => {
 
@@ -98,6 +104,7 @@ card.addEventListener("click", () => {
 
                     card1 = null
                     card2 = null
+                    lockBoard = false
 
                 }, 1000)
 
@@ -112,10 +119,14 @@ card.addEventListener("click", () => {
         }
     })
 
+
+
+
+
 game_board.append(card)
 card.append(img)
 });
-console
+
 console.log(doubel_cards)
 
 
