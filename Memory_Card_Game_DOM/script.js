@@ -35,6 +35,7 @@ const cards = [
 const game_board = document.querySelector("#game-board")
 const movesElement = document.querySelector("#moves")
 const pairsElement = document.querySelector("#pairs")
+const messageElement = document.querySelector("#message")
 const doubel_cards = []
 
 let card1 = null
@@ -84,11 +85,15 @@ card.addEventListener("click", () => {
             card2 = card
             moves++
             movesElement.textContent = moves
+            
             if (card1.id === card2.id) {
                 
                 result = true
                 pairs++
                 pairsElement.textContent = pairs
+                if(pairs === doubel_cards.length / 2){
+                messageElement.textContent = "You won!"
+                }
 
             } else {
 
@@ -124,7 +129,9 @@ card.addEventListener("click", () => {
 
             }
         }
+
     })
+
 
 
 
@@ -134,7 +141,7 @@ game_board.append(card)
 card.append(img)
 });
 
-console.log(doubel_cards)
+console.log(doubel_cards.length)
 
 
 
