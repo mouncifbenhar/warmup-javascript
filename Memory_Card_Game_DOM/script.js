@@ -48,14 +48,21 @@ const img = document.createElement("img")
 card.classList.add("card")
 img.setAttribute("src",element.image)
 img.setAttribute("alt",element.name)
-
+card.addEventListener("click", () => {
+        
+        card.classList.add("flipped")
+        console.log(element.id)
+    }
+)
 
 
 game_board.append(card)
 card.append(img)
 
-console.log(img)
+
 });
+
+
 
 
 
