@@ -35,9 +35,11 @@ const cards = [
 const game_board = document.querySelector("#game-board")
 const doubel_cards = []
 
-cards.forEach(e => 
-    doubel_cards.push(e,e)
+cards.forEach(e =>
+    doubel_cards.push({ ...e, b: Math.random()}, { ...e, b: Math.random()})
 )
+doubel_cards.sort((a,b) => a.b - b.b)
+
 
 doubel_cards.forEach(element => {
 const card = document.createElement("div")
@@ -46,7 +48,7 @@ const img = document.createElement("img")
 card.classList.add("card")
 img.setAttribute("src",element.image)
 img.setAttribute("alt",element.name)
-img.classList.add("img")
+
 
 
 game_board.append(card)
