@@ -35,6 +35,10 @@ const cards = [
 const game_board = document.querySelector("#game-board")
 const doubel_cards = []
 
+let card1 = null
+let card2 = null
+let result = false
+
 cards.forEach(e =>
     doubel_cards.push({ ...e, b: Math.random()}, { ...e, b: Math.random()})
 )
@@ -46,23 +50,73 @@ const card = document.createElement("div")
 const img = document.createElement("img")
 
 card.classList.add("card")
+card.setAttribute("id",element.id)
 img.setAttribute("src",element.image)
 img.setAttribute("alt",element.name)
 card.addEventListener("click", () => {
-        
-        card.classList.add("flipped")
-        console.log(element.id)
-    }
-)
 
+
+        if (card.classList.contains("flipped")) {
+            return
+        }
+
+        card.classList.add("flipped")
+
+
+        if (card1 === null) {
+
+            card1 = card
+
+        } 
+        
+
+        else {
+
+            card2 = card
+
+            if (card1.id === card2.id) {
+
+                result = true
+
+            } else {
+
+                result = false
+
+            }
+
+            console.log("card1:", card1.id)
+            console.log("card2:", card2.id)
+            console.log("result:", result)
+
+
+            if (!result) {
+
+                setTimeout(() => {
+
+                    card1.classList.remove("flipped")
+                    card2.classList.remove("flipped")
+
+                    card1 = null
+                    card2 = null
+
+                }, 1000)
+
+            }
+            
+            else {
+
+                card1 = null
+                card2 = null
+
+            }
+        }
+    })
 
 game_board.append(card)
 card.append(img)
-
-
 });
-
-
+console
+console.log(doubel_cards)
 
 
 
